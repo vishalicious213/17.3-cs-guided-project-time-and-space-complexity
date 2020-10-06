@@ -22,3 +22,23 @@ complexities and think about the tradeoffs between the solutions.*
 def contains_duplicate(nums):
     # Your code here
 
+    # Plan1:
+    # made a set
+    # if set length wasn't equal to the original array length: that means there were dupes
+    # Runtime: O(n)
+    # space: O(n)
+    pass
+# Plan2:
+def contains_duplicate_2(nums):
+    # overall runtime: O(nlogn + n) --> O(n log n)
+    # space complexity: O(1)
+    nums.sort()    # sorting is usually O(n log n)
+                   # nums.sort() sorts it in place
+    # everything below this line is O(n)
+    i = 0          # O(1)
+    while i < len(nums) - 1:      # up to O(n)
+        if nums[i] == nums[i+1]:  # O(1)
+            return True
+        i += 1
+    return False
+print(contains_duplicate_2([1]))
